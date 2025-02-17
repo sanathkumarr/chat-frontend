@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", { username, password });
+      const response = await axios.post("https://chat-backend-m9rn.onrender.com/api/auth/login", { username, password });
       setUser(response.data);
       localStorage.setItem("token", response.data.token);
     } catch (error) {

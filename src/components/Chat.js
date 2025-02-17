@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import axios from "axios";
 
-const socket = io("https://chat-backend-m9rn.onrender.com/");
+const socket = io("https://chat-backend-m9rn.onrender.com", {
+  withCredentials: true,  // Enable cookies if necessary
+});
 
 const ChatApp = () => {
   const { user, setUser } = useContext(AuthContext);
