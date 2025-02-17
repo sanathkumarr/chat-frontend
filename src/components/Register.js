@@ -11,8 +11,8 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://chat-backend-drab.vercel.app/api/auth/register", { username, password });
-      navigate("https://chat-backend-drab.vercel.app/login");
+      await axios.post("https://chat-backend-m9rn.onrender.com/api/auth/register", { username, password });
+      navigate("/login");
     } catch (error) {
       console.error("Registration error:", error);
     }

@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     await login(username, password);
-    navigate("https://chat-backend-drab.vercel.app/chat");
+    navigate("/chat");
   };
 
   return (
