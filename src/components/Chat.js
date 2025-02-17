@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import axios from "axios";
 
-const socket = io("https://chat-backend-flame-nine.vercel.app/");
+const socket = io("https://chat-backend-drab.vercel.app/");
 
 const ChatApp = () => {
   const { user, setUser } = useContext(AuthContext);
@@ -21,7 +21,7 @@ const ChatApp = () => {
       socket.emit("join", user.username);
       fetchContacts();
     } else {
-      navigate("/login");
+      navigate("https://chat-backend-drab.vercel.app/login");
     }
   }, [user, navigate]);
 
@@ -42,7 +42,7 @@ const ChatApp = () => {
 
   const fetchContacts = async () => {
     try {
-      const res = await axios.get(`https://chat-backend-flame-nine.vercel.app/api/chat/contacts/${user.username}`);
+      const res = await axios.get(`https://chat-backend-drab.vercel.app/api/chat/contacts/${user.username}`);
       setContacts(res.data);
     } catch (err) {
       console.error("Error fetching contacts:", err);
@@ -54,7 +54,7 @@ const ChatApp = () => {
   const searchUser = async () => {
     if (!searchQuery.trim()) return;
     try {
-      const res = await axios.get(`https://chat-backend-flame-nine.vercel.app/api/chat/search/${searchQuery}`);
+      const res = await axios.get(`https://chat-backend-drab.vercel.app/api/chat/search/${searchQuery}`);
       if (res.data) {
         setContacts((prevContacts) => {
           // Avoid adding duplicate contacts
@@ -75,7 +75,7 @@ const ChatApp = () => {
   const selectChat = async (contact) => {
     setSelectedChat(contact);
     try {
-      const res = await axios.get(`https://chat-backend-flame-nine.vercel.app/api/chat/messages/${user.username}/${contact.username}`);
+      const res = await axios.get(`https://chat-backend-drab.vercel.app/api/chat/messages/${user.username}/${contact.username}`);
       setMessages(res.data);
     } catch (error) {
       console.error("Error fetching messages:", error);
@@ -100,7 +100,7 @@ const ChatApp = () => {
     setMessage("");
   
     try {
-      await axios.post("https://chat-backend-flame-nine.vercel.app/api/chat/private-message", chatMessage);
+      await axios.post("https://chat-backend-drab.vercel.app/api/chat/private-message", chatMessage);
     } catch (error) {
       console.error("Error sending message:", error);
     }
